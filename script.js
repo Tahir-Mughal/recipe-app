@@ -75,6 +75,54 @@ showAllData();
 // }
 
 
+async function showAllData() {
+    let allapi = `https://api.spoonacular.com/recipes/complexSearch?number=15&apiKey=${apiKey}`
+
+    if (localStorage.getItem('allData') === null) {
+        await fetch(allapi)
+            .then(response => response.json())
+            .then(data => localStorage.setItem('allData', JSON.stringify(data)))
+            .catch(error => console.error(error));
+    }
+    let data = JSON.parse(localStorage.getItem('allData'));
+
+    for (const element of data.results) {
+        let foodCard = document.createElement('div');
+        foodCard.classList.add('foodCard');
+        foodCard.id = element.id;
+
+        foodCard.innerHTML = `<h2>Title : ${element.title}</h2>
+                           <img src="${element.image}" alt="${element.title}" >
+                           <h4>ID : ${element.id}</h4>`;
+        mainDiv.appendChild(foodCard);
+
+        let recApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
+
+        if (localStorage.getItem(element.id) === null) {
+            await fetch(recApi)
+                .then(response => response.json())
+                .then(data => localStorage.setItem(element.id, JSON.stringify(data)))
+                .catch(error => console.error(error));
+        }
+
+        let ingData = JSON.parse(localStorage.getItem(element.id));
+
+        let ingredientsText = '';
+        ingData.ingredients.forEach(element => {
+            ingredientsText += element.name + ' ,';
+        });
+
+        let title = document.createElement('h2');
+        title.innerHTML = "Ingredients";
+        foodCard.appendChild(title);
+
+        let ingredientsPara = document.createElement('p');
+        ingredientsPara.className = 'ing';
+        ingredientsPara.innerHTML = ingredientsText;
+        foodCard.appendChild(ingredientsPara);
+
+    };
+}
 
 
 
