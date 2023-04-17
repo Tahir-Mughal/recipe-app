@@ -22,3 +22,27 @@
 </body>
 
 </html>
+
+
+
+
+<!-- fetch(`https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                data.forEach(element => {
+                    let Ingredients = document.createElement('ul');
+                    Ingredients.className = 'ing';
+                    Ingredients.innerHTML = "data"
+                    foodCard.appendChild(Ingredients);
+                })
+            })
+            .catch(error => console.error(error));
+
+
+
+
+            fetch(`https://api.spoonacular.com/recipes/636756/ingredientWidget.json?apiKey=${apiKey}`)
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error)); -->

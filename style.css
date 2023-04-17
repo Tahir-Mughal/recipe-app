@@ -21,3 +21,9 @@
 .img {
     height: auto;
 }
+
+
+.ing {
+    color: red;
+    display: flex
+}
