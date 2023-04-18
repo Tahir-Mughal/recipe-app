@@ -1,9 +1,10 @@
 
-const apiKey = 'd2d71685649644f4a35b27d7e43b22ad';
+const apiKey = 'b844906c0e934279915fe4da7590ad0d';
 const mainDiv = document.getElementById('mainDiv');
 showAllData();
 async function showAllData() {
-    let allapi = `https://api.spoonacular.com/recipes/complexSearch?number=15&apiKey=${apiKey}`
+    let allapi = `https://api.spoonacular.com/recipes/complexSearch?number=12&apiKey=${apiKey}`
+
 
     if (localStorage.getItem('allData') === null) {
         await fetch(allapi)
@@ -18,9 +19,9 @@ async function showAllData() {
         foodCard.classList.add('foodCard');
         foodCard.id = element.id;
 
-        foodCard.innerHTML = `<h2>Title : ${element.title}</h2>
+        foodCard.innerHTML = `<h2>${element.title}</h2>
                            <img src="${element.image}" alt="${element.title}" >
-                           <h4>${element.id}</h4>`;
+                           <h4 class="id">${element.id}</h4>`;
         mainDiv.appendChild(foodCard);
 
         let ingApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
@@ -36,7 +37,7 @@ async function showAllData() {
 
         let ingredientsText = '';
         ingData.ingredients.forEach(element => {
-            ingredientsText += element.name + ' ,';
+            ingredientsText += element.name + ', ';
         });
 
         let title = document.createElement('h2');
@@ -49,7 +50,8 @@ async function showAllData() {
         foodCard.appendChild(ingredientsPara);
 
         let button = document.createElement('button');
-        button.innerHTML = "Click here";
+        button.innerHTML = "Click here for complete recipe";
+        button.className = 'recBtn';
         foodCard.appendChild(button);
 
         // event listeners
@@ -68,7 +70,7 @@ async function searchfnc() {
     mainDiv.innerHTML = "";
     let searchTxt = document.getElementById('searchInput').value;
     let search = searchTxt.toLowerCase();
-    let searchApi = `https://api.spoonacular.com/recipes/complexSearch?number=15&query=${search}&apiKey=${apiKey}`;
+    let searchApi = `https://api.spoonacular.com/recipes/complexSearch?query=${search}&apiKey=${apiKey}`;
 
     if (localStorage.getItem(search) === null) {
         await fetch(searchApi)
@@ -83,9 +85,9 @@ async function searchfnc() {
         let foodCard = document.createElement('div');
         foodCard.classList.add('foodCard');
         foodCard.id = element.id;
-        foodCard.innerHTML = `<h2>Title : ${element.title}</h2>
+        foodCard.innerHTML = `<h2>${element.title}</h2>
                            <img src="${element.image}" alt="${element.title}" >
-                           <h4>ID : ${element.id}</h4>`;
+                           <h4 class="id">${element.id}</h4>`;
         mainDiv.appendChild(foodCard);
 
         let recApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
@@ -101,7 +103,7 @@ async function searchfnc() {
 
         let ingredientsText = '';
         ingData.ingredients.forEach(element => {
-            ingredientsText += element.name + ' ,';
+            ingredientsText += element.name + ', ';
         });
 
         let title = document.createElement('h2');
@@ -114,7 +116,8 @@ async function searchfnc() {
         foodCard.appendChild(ingredientsPara);
 
         let button = document.createElement('button');
-        button.innerHTML = "Click here";
+        button.innerHTML = "Click here for complete recipe";
+        button.className = 'recBtn';
         foodCard.appendChild(button);
 
         button.addEventListener('click', recFunc)
@@ -168,6 +171,9 @@ function closeFun() {
     // document.getElementById('nav').style.display = "flex";
     // recDiv.style.display = 'none';
     recDiv.innerHTML = ""
+    // document.getElementById('2ndDiv').innerHTML = ''
 
 
 }
+
+
