@@ -48,18 +48,6 @@ body {
     cursor: pointer;
 }
 
-
-/* .foodCard {
-    border: 2px solid black;
-    margin: 1rem;
-    width: 25%;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    gap: 5px;
-    max-width: 90%;
-    padding: 5px;
-} */
 .foodCard {
     border: 1px solid rgb(219, 207, 207);
     border-radius: 10px;
@@ -67,53 +55,37 @@ body {
     width: 25%;
     max-width: 400px;
     height: 550px;
-    /* Set a fixed maximum width to prevent excessive stretching */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    /* Add space between title, image and id */
     align-items: center;
-    /* Center the content horizontally */
     text-align: center;
     padding: 10px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    /* Add a subtle box-shadow */
     background-color: rgb(228, 236, 184);
-    /* Set a white background color */
     transition: transform 0.2s ease-in-out;
-    /* Add a smooth transition on hover */
 }
 
 .foodCard:hover {
     transform: translateY(-5px);
-    /* Lift the card slightly on hover */
 }
 
 .foodCard img {
     width: 100%;
-    /* Ensure the image fills the card horizontally */
     height: 200px;
-    /* Set a fixed height to maintain aspect ratio */
     object-fit: cover;
-    /* Crop the image to fit the container */
     object-position: center;
-    /* Center the image within the container */
 }
 
 .foodCard h2 {
     font-size: 1.2rem;
-    /* Increase font size for title */
     margin-bottom: 0;
-    /* Remove default margin to align with image */
 }
 
 .foodCard h4 {
     margin: 0;
-    /* Remove default margin to align with title */
     font-size: 1.2rem;
-    /* Increase font size for id */
     color: gray;
-    /* Set a muted text color */
 }
 
 
@@ -121,9 +93,6 @@ body {
     color: red;
 }
 
-/* .img {
-    height: auto;
-} */
 
 
 .ing {
@@ -154,5 +123,10 @@ body {
 .secDiv {
     display: flex;
     flex-direction: column;
-    max-width: 90%;
+    padding-right: 10%;
+    padding-left: 10%;
+}
+
+.recDiv {
+    line-height: 30px;
 }

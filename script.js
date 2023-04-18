@@ -157,8 +157,8 @@ async function recFunc() {
     let recCard = document.createElement('div');
     recCard.classList.add('recCard');
     // recCard.id = element.id;
-    recCard.innerHTML = `<h2>inst: ${recData.instructions}</h2>
-                           <h2>summ: ${recData.summary}</h2>`;
+    recCard.innerHTML = `<h2>Instructions:</h2> <P>${recData.instructions}</p>
+                           <h2>Summary:</h2> <p>${recData.summary}</p>`;
     recDiv.appendChild(recCard);
 
     let closeBtn = document.getElementById('clsBtn')
