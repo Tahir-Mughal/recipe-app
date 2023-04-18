@@ -93,7 +93,7 @@ async function showAllData() {
 
         foodCard.innerHTML = `<h2>Title : ${element.title}</h2>
                            <img src="${element.image}" alt="${element.title}" >
-                           <h4>ID : ${element.id}</h4>`;
+                           <h4>${element.id}</h4>`;
         mainDiv.appendChild(foodCard);
 
         let ingApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
@@ -120,6 +120,14 @@ async function showAllData() {
         ingredientsPara.className = 'ing';
         ingredientsPara.innerHTML = ingredientsText;
         foodCard.appendChild(ingredientsPara);
+
+        let button = document.createElement('button');
+        button.innerHTML = "Click here";
+        foodCard.appendChild(button);
+
+        // event listeners
+        // btn=document.getElementById
+        button.addEventListener('click', recFunc)
 
     };
 }
@@ -249,6 +257,10 @@ async function searchfnc() {
         ingredientsPara.className = 'ing';
         ingredientsPara.innerHTML = ingredientsText;
         foodCard.appendChild(ingredientsPara);
+
+        let button = document.createElement('button');
+        button.innerHTML = "Click here";
+        foodCard.appendChild(button);
     }
 }
 
@@ -366,16 +378,17 @@ async function searchfnc() {
 // async function recFunc() {
 //     let recipe = `https://api.spoonacular.com/recipes/715495/information?apiKey=${apiKey}`;
 
-//     if (localStorage.getItem(715495) === null) {
-//         await fetch(recipe)
+//     if (localStorage.getItem(715495 + ' rec') === null) {
+//         fetch(recipe)
 //             .then(response => response.json())
-//             .then(data => localStorage.setItem(715495, JSON.stringify(data)))
+//             .then(data => localStorage.setItem(715495 + ' rec', JSON.stringify(data)))
 //             .catch(error => console.error(error));
 //     }
 
-//     let recData = JSON.parse(localStorage.getItem(715495));
+//     let recData = JSON.parse(localStorage.getItem(715495 + ' rec'));
+//     // console.log(recData)
 
-//     let recCard = document.createElement('p');
+//     let recCard = document.createElement('div');
 //     recCard.classList.add('recCard');
 //     recCard.id = recData.id;
 //     recCard.innerHTML = `<h2>inst: ${recData.instructions}</h2>
@@ -383,3 +396,35 @@ async function searchfnc() {
 //     recDiv.appendChild(recCard);
 // }
 
+const recDiv = document.getElementById('recDiv');
+
+async function recFunc() {
+    mainDiv.style.display = 'none';
+
+    let abc = this.previousElementSibling
+    let x = abc.previousElementSibling
+    let z = x.previousElementSibling
+    let elemId = z.innerText;
+    // console.log(elemId)
+    // console.log(z)
+    let recipe = `https://api.spoonacular.com/recipes/${elemId}/information?apiKey=${apiKey}`;
+
+    if (localStorage.getItem(elemId + ' rec') === null) {
+        await fetch(recipe)
+            .then(response => response.json())
+            .then(data => localStorage.setItem(elemId + ' rec', JSON.stringify(data)))
+            .catch(error => console.error(error));
+    }
+
+    let recData = JSON.parse(localStorage.getItem(elemId + ' rec'));
+    // console.log(recData)
+
+    let recCard = document.createElement('div');
+    recCard.classList.add('recCard');
+    // recCard.id = element.id;
+    recCard.innerHTML = `<h2>inst: ${recData.instructions}</h2>
+                           <h2>summ: ${recData.summary}</h2>`;
+    recDiv.appendChild(recCard);
+
+    
+}
