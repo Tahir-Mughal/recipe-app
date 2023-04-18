@@ -426,5 +426,14 @@ async function recFunc() {
                            <h2>summ: ${recData.summary}</h2>`;
     recDiv.appendChild(recCard);
 
-    
+    let closeBtn = document.getElementById('clsBtn')
+    closeBtn.addEventListener('click', closeFun)
+
+    recDiv.style.display = 'flex'
+}
+function closeFun() {
+    mainDiv.style.display = 'flex';
+    // recDiv.style.display = 'none';
+    document.getElementById("recDiv").innerHTML = ""
+
 }
