@@ -89,19 +89,12 @@ body {
 }
 
 
-.title {
-    color: red;
-}
-
-
-
 .ing {
     color: grey;
     align-self: center;
 }
 
 .id {
-    color: red;
     display: none;
 }
 
