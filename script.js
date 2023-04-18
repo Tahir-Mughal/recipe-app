@@ -1,6 +1,6 @@
 
 const apiKey = 'd2d71685649644f4a35b27d7e43b22ad';
-const mainDiv = document.getElementById('showres');
+const mainDiv = document.getElementById('mainDiv');
 // ingApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`
 
 showAllData();
@@ -37,10 +37,10 @@ showAllData();
 //                            <h4>ID : ${element.id}</h4>`;
 //         mainDiv.appendChild(foodCard);
 //         // let gainid
-//         let recApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
+//         let ingApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
 
 //         if (localStorage.getItem(search + element.id) === null) {
-//             await fetch(recApi)
+//             await fetch(ingApi)
 //                 .then(response => response.json())
 //                 .then(data => localStorage.setItem(search + element.id, JSON.stringify(data)))
 //                 .catch(error => console.error(error));
@@ -96,10 +96,10 @@ async function showAllData() {
                            <h4>ID : ${element.id}</h4>`;
         mainDiv.appendChild(foodCard);
 
-        let recApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
+        let ingApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`;
 
         if (localStorage.getItem(element.id) === null) {
-            await fetch(recApi)
+            await fetch(ingApi)
                 .then(response => response.json())
                 .then(data => localStorage.setItem(element.id, JSON.stringify(data)))
                 .catch(error => console.error(error));
@@ -159,11 +159,11 @@ async function showAllData() {
 
 
 
-//         let recApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`
+//         let ingApi = `https://api.spoonacular.com/recipes/${element.id}/ingredientWidget.json?apiKey=${apiKey}`
 
 //         if (localStorage.getItem(search + `${element.id}`) === null) {
 //             // console.log("if condition works");
-//             fetch(recApi)
+//             fetch(ingApi)
 //                 .then(response => response.json())
 //                 .then(data => localStorage.setItem(search + `${element.id}`, JSON.stringify(data)))
 //                 .catch(error => console.error(error));
@@ -269,6 +269,7 @@ async function searchfnc() {
 
 
 
+
 // // To check recipe
 
 // let checkrecipe = document.getElementsByClassName('foodCard');
@@ -317,7 +318,7 @@ async function searchfnc() {
 
 
 //     {
-//         var recipe = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
+// var recipe = `https://api.spoonacular.com/recipes/${id}/information?apiKey=${apiKey}`
 //     fetch(recipe)
 //             .then(response => response.json())
 //             .then(data => console.log(data))
@@ -345,3 +346,40 @@ async function searchfnc() {
 // let data = JSON.parse(localStorage.getItem(636756))
 // console.log(data)
 // }
+
+
+
+
+
+
+// var recipe = `https://api.spoonacular.com/recipes/715495/information?apiKey=${apiKey}`
+// fetch(recipe)
+//     .then(response => response.json())
+//     .then(data => console.log(data))
+//     .catch(error => console.error(error))
+
+
+
+
+// const recDiv = document.getElementById('recDiv');
+
+// async function recFunc() {
+//     let recipe = `https://api.spoonacular.com/recipes/715495/information?apiKey=${apiKey}`;
+
+//     if (localStorage.getItem(715495) === null) {
+//         await fetch(recipe)
+//             .then(response => response.json())
+//             .then(data => localStorage.setItem(715495, JSON.stringify(data)))
+//             .catch(error => console.error(error));
+//     }
+
+//     let recData = JSON.parse(localStorage.getItem(715495));
+
+//     let recCard = document.createElement('p');
+//     recCard.classList.add('recCard');
+//     recCard.id = recData.id;
+//     recCard.innerHTML = `<h2>inst: ${recData.instructions}</h2>
+//                            <h2>summ: ${recData.summary}</h2>`;
+//     recDiv.appendChild(recCard);
+// }
+
