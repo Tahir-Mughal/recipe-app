@@ -1,3 +1,4 @@
+// Displaying recipe cards on home page (using showAllData function)
 
 const apiKey = 'b844906c0e934279915fe4da7590ad0d';
 const mainDiv = document.getElementById('mainDiv');
@@ -54,14 +55,15 @@ async function showAllData() {
         button.className = 'recBtn';
         foodCard.appendChild(button);
 
-        // event listeners
-        // btn=document.getElementById
+
         button.addEventListener('click', recFunc)
 
     };
 }
 
 
+
+// Searching the recipes by using eventListeners on search button (using searchfnc function)
 
 let searchBtn = document.getElementById('searchBtn');
 searchBtn.addEventListener('click', searchfnc);
@@ -123,25 +125,22 @@ async function searchfnc() {
         button.addEventListener('click', recFunc)
 
     }
-    // document.getElementById('searchInput').innerHTML = '';
 }
 
 
 
-
+// Creating Recipe Div to show complete details on click (using recFunc function)
 
 const recDiv = document.getElementById('recDiv');
 
 async function recFunc() {
     mainDiv.style.display = 'none';
-    // document.getElementById('nav').innerHTML = "";
 
-    let abc = this.previousElementSibling
-    let x = abc.previousElementSibling
-    let z = x.previousElementSibling
-    let elemId = z.innerText;
-    // console.log(elemId)
-    // console.log(z)
+    let recip = this.previousElementSibling
+    let ingred = recip.previousElementSibling
+    let eleId = ingred.previousElementSibling
+    let elemId = eleId.innerText;
+
     let recipe = `https://api.spoonacular.com/recipes/${elemId}/information?apiKey=${apiKey}`;
 
     if (localStorage.getItem(elemId + ' rec') === null) {
@@ -154,26 +153,26 @@ async function recFunc() {
     let recData = JSON.parse(localStorage.getItem(elemId + ' rec'));
     // console.log(recData)
 
+    let button = document.createElement('button');
+    button.innerHTML = "Close";
+    button.className = 'clsBtn';
+    button.setAttribute('id', 'clsBtn')
+    recDiv.appendChild(button);
+
     let recCard = document.createElement('div');
     recCard.classList.add('recCard');
-    // recCard.id = element.id;
+
     recCard.innerHTML = `<h2>Instructions:</h2> <P>${recData.instructions}</p>
                            <h2>Summary:</h2> <p>${recData.summary}</p>`;
     recDiv.appendChild(recCard);
 
-    let closeBtn = document.getElementById('clsBtn')
+    closeBtn = document.getElementById('clsBtn')
     closeBtn.addEventListener('click', closeFun)
-
-    recDiv.style.display = 'flex'
 }
+
 function closeFun() {
     mainDiv.style.display = 'flex';
-    // document.getElementById('nav').style.display = "flex";
-    // recDiv.style.display = 'none';
     recDiv.innerHTML = ""
-    // document.getElementById('2ndDiv').innerHTML = ''
-
-
 }
 
 
