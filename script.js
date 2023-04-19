@@ -1,6 +1,6 @@
 // Displaying recipe cards on home page (using showAllData function)
 
-const apiKey = 'b844906c0e934279915fe4da7590ad0d';
+const apiKey = 'c63e31148b8c4b579af0e598201ef47d';
 const mainDiv = document.getElementById('mainDiv');
 showAllData();
 async function showAllData() {
