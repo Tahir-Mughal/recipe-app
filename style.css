@@ -51,23 +51,12 @@ body {
     cursor: pointer;
 }
 
-.backBtn {
-    background-color: #4CAF50;
-    color: #fff;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 5px 10px;
-    border: none;
-    cursor: pointer;
-}
-
 .foodCard {
     border: 1px solid rgb(219, 207, 207);
     border-radius: 10px;
     margin: 1rem;
     width: 20%;
-    min-width: 320px;
+    min-width: 300px;
     min-height: 550px;
     display: flex;
     flex-direction: column;
@@ -96,12 +85,6 @@ body {
     margin-bottom: 0;
 }
 
-.foodCard h4 {
-    margin: 0;
-    font-size: 1.2rem;
-    color: gray;
-}
-
 
 .ing {
     color: grey;
@@ -114,8 +97,12 @@ body {
 
 
 .recBtn {
-    background-color: rgb(146, 234, 196);
-    border-radius: 10px;
+    background-color: rgb(206 242 227);
+    border: 0.5px solid #bb9dd8;
+    border-radius: 5px;
+    width: 70%;
+    padding: 2%;
+    cursor: pointer;
 }
 
 .clsBtn {
